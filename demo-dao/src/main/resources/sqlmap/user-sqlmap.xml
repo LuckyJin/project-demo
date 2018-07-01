@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="User">
+    <!-- Alias Map Defined -->
+    <typeAlias alias="UserQuery" type="com.raycloud.tb.query.UserQuery"/>
+    <typeAlias alias="User" type="com.raycloud.tb.pojo.User"/>
+    <resultMap id="user" class="User">
+            <result property="taobaoNick" column="taobao_nick"/>
+        </resultMap>
+    <!-- Select SQL -->
+    <sql id="user.selector">
+        SELECT
+    <dynamic>
+        <isNotEmpty property="fields">
+            $fields$
+        </isNotEmpty>
+        <isEmpty property="fields">
+                taobao_nick        </isEmpty>
+    </dynamic>
+        FROM user
+    </sql>
+    <sql id="userList.where">
+        <dynamic prepend=" WHERE ">
+                    <isNotNull property="taobaoNick" prepend=" AND ">
+            taobao_nick=#taobaoNick#
+        </isNotNull>
+                    <isNotNull property="keys" prepend=" AND ">
+                taobao_nick in
+                <iterate conjunction="," open="(" close=")" property="keys">
+                    #keys[]#
+                </iterate>
+            </isNotNull>
+                            </dynamic>
+    </sql>
+
+    <!-- 用#号会导致druid连接池报错 -->
+    <sql id="userList.order">
+        <dynamic prepend=" ORDER BY ">
+            <isNotEmpty property="orderFields">
+                <iterate property="orderFields" conjunction="," open="" close="">
+                    $orderFields[].fieldName$  $orderFields[].order$
+                </iterate>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+
+    <sql id="userList.limit">
+        <dynamic prepend=" LIMIT  ">
+            <isNotEmpty property="startRow">
+                #startRow#,#pageSize#
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+
+            <!-- 根据主键查询 -->
+        <select id="User.getUserByKey" resultMap="user"  parameterClass="hashMap">
+                      SELECT       taobao_nick  FROM user
+                WHERE
+                       taobao_nick=#taobaoNick#         </select>
+                <select id="User.getUsersByKeys" resultMap="user"  parameterClass="hashMap">
+            SELECT       taobao_nick  FROM user
+                WHERE
+                                    taobao_nick in
+                <iterate conjunction="," open="(" close=")" property="keys">
+                    #keys[]#
+                </iterate>
+                    </select>
+    
+            <!-- 根据主键删除 -->
+        <delete id="User.deleteByKey"  parameterClass="hashMap">
+            DELETE FROM user
+                WHERE
+                        taobao_nick=#taobaoNick#             </delete>
+    
+        <delete id="User.deleteByKeys">
+        DELETE FROM user
+            WHERE
+                                taobao_nick in
+                <iterate conjunction="," open="(" close=")" property="keys">
+                    #keys[]#
+                </iterate>
+                </delete>
+    
+            <!-- 根据主键更新 -->
+                        <update id="updateUserByKey" parameterClass="User">
+            UPDATE user
+            <dynamic prepend="SET" >
+                                                    <isNotNull prepend="," property="taobaoNick">
+                                                    taobao_nick = #taobaoNick#
+                                            </isNotNull>
+                                        </dynamic>
+            WHERE
+                        taobao_nick=#taobaoNick#             </update>
+        <!-- 分页 -->
+    <select id="getUserListWithPage" parameterClass="UserQuery" resultMap="user">
+        <include refid="user.selector"/>
+        <include refid="userList.where"/>
+        <include refid="userList.order"/>
+        <include refid="userList.limit"/>
+    </select>
+    <select id="getUserListCount" parameterClass="UserQuery" resultClass="int">
+        SELECT count(1) FROM user
+        <include refid="userList.where"/>
+    </select>
+    <select id="getUserList" parameterClass="UserQuery" resultMap="user">
+        <include refid="user.selector"/>
+        <include refid="userList.where"/>
+        <include refid="userList.order"/>
+    </select>
+
+<!-- 如果使用自定义字段查询,则要使用resultClass否则会出现异常
+注意：ibatis存在SQL缓存，所以自定义字段的时候需要开启 remapResults="true" 存在一定性能问题
+-->
+    <select id="getUserListWithPageFields" parameterClass="UserQuery" remapResults="true" resultClass="User">
+        <include refid="user.selector"/>
+        <include refid="userList.where"/>
+        <include refid="userList.order"/>
+        <include refid="userList.limit"/>
+    </select>
+    <select id="getUserListFields" parameterClass="UserQuery" remapResults="true" resultClass="User">
+        <include refid="user.selector"/>
+        <include refid="userList.where"/>
+        <include refid="userList.order"/>
+    </select>
+        <insert id="insertUser" parameterClass="User">
+        INSERT INTO user
+        <dynamic prepend="(" close=")">
+                                                            <isNotEmpty prepend="," property="taobaoNick">
+                        taobao_nick
+                    </isNotEmpty >
+                                    </dynamic>
+        VALUES
+        <dynamic prepend="(" close=")">
+                                                <isNotEmpty  prepend="," property="taobaoNick">
+                                                    #taobaoNick#
+                                            </isNotEmpty >
+                                    </dynamic>
+    </insert>
+
+            </sqlMap>

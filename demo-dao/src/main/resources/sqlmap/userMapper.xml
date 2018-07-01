@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.raycloud.dao.testDao.UserDao">
+    <resultMap id="user" type="com.raycloud.dao.bean.User">
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="pwd" column="pwd"/>
+        <result property="phone" column="phone"/>
+        <result property="created" column="created"/>
+        <result property="modified" column="modified"/>
+        <result property="userId" column="user_id"/>
+    </resultMap>
+
+    <sql id="columns">
+        id, username, pwd, phone, created, modified, user_id
+    </sql>
+
+    <sql id="fields">
+        #{id}, #{username}, #{pwd}, #{phone}, #{created}, #{modified}, #{userId}
+    </sql>
+
+    <sql id="update">
+        id = #{id},
+        username = #{username},
+        pwd = #{pwd},
+        phone = #{phone},
+        created = #{created},
+        modified = #{modified},
+        user_id = #{userId}
+    </sql>
+
+    <sql id="where">
+        id = #{id}
+        AND  username = #{username}
+        AND  pwd = #{pwd}
+        AND  phone = #{phone}
+        AND  created = #{created}
+        AND  modified = #{modified}
+        AND  user_id = #{userId}
+    </sql>
+
+    <sql id="duplicate">
+        ON DUPLICATE KEY UPDATE
+        id = VALUES(id),
+        username = VALUES(username),
+        pwd = VALUES(pwd),
+        phone = VALUES(phone),
+        created = VALUES(created),
+        modified = VALUES(modified),
+        user_id = VALUES(user_id)
+    </sql>
+
+    <select id="selectUser" resultMap="user">
+        SELECT
+        <include refid="columns"/>
+        FROM user
+        WHERE taobao_id = #{taobaoId}
+        ORDER BY gmt_created DESC
+    </select>
+
+    <insert id="save" parameterType="user">
+        INSERT INTO
+        user(<include refid="columns"/>)
+        VALUES
+        (<include refid="fields"/>)
+    </insert>
+</mapper>

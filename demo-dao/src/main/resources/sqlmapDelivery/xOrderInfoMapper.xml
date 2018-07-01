@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.raycloud.dao.superdelivery2.XOrderInfoDao">
+<resultMap id="xOrderInfo" type="com.raycloud.dao.bean.XOrderInfo">
+<result property="oid" column="oid"/>
+<result property="tid" column="tid"/>
+<result property="sellerNick" column="seller_nick"/>
+<result property="buyerNick" column="buyer_nick"/>
+<result property="numIid" column="num_iid"/>
+<result property="totalFee" column="total_fee"/>
+<result property="discountFee" column="discount_fee"/>
+<result property="payment" column="payment"/>
+<result property="modified" column="modified"/>
+<result property="status" column="status"/>
+<result property="skuPropertiesName" column="sku_properties_name"/>
+<result property="num" column="num"/>
+<result property="title" column="title"/>
+<result property="price" column="price"/>
+<result property="picPath" column="pic_path"/>
+<result property="outerIid" column="outer_iid"/>
+<result property="outerSkuId" column="outer_sku_id"/>
+<result property="itemMealName" column="item_meal_name"/>
+<result property="refundStatus" column="refund_status"/>
+<result property="mainTid" column="main_tid"/>
+<result property="oidBak" column="oid_bak"/>
+<result property="logisticsCompany" column="logistics_company"/>
+<result property="invoiceNo" column="invoice_no"/>
+<result property="consignTime" column="consign_time"/>
+<result property="skuId" column="sku_id"/>
+</resultMap>
+
+<sql id="columns">
+        oid, tid, seller_nick, buyer_nick, num_iid, total_fee, discount_fee, payment, modified, status, sku_properties_name, num, title, price, pic_path, outer_iid, outer_sku_id, item_meal_name, refund_status, main_tid, oid_bak, logistics_company, invoice_no, consign_time, sku_id
+</sql>
+
+<sql id="fields">
+        #{oid}, #{tid}, #{sellerNick}, #{buyerNick}, #{numIid}, #{totalFee}, #{discountFee}, #{payment}, #{modified}, #{status}, #{skuPropertiesName}, #{num}, #{title}, #{price}, #{picPath}, #{outerIid}, #{outerSkuId}, #{itemMealName}, #{refundStatus}, #{mainTid}, #{oidBak}, #{logisticsCompany}, #{invoiceNo}, #{consignTime}, #{skuId}
+</sql>
+
+<sql id="update">
+            oid = #{oid}, 
+            tid = #{tid}, 
+            seller_nick = #{sellerNick}, 
+            buyer_nick = #{buyerNick}, 
+            num_iid = #{numIid}, 
+            total_fee = #{totalFee}, 
+            discount_fee = #{discountFee}, 
+            payment = #{payment}, 
+            modified = #{modified}, 
+            status = #{status}, 
+            sku_properties_name = #{skuPropertiesName}, 
+            num = #{num}, 
+            title = #{title}, 
+            price = #{price}, 
+            pic_path = #{picPath}, 
+            outer_iid = #{outerIid}, 
+            outer_sku_id = #{outerSkuId}, 
+            item_meal_name = #{itemMealName}, 
+            refund_status = #{refundStatus}, 
+            main_tid = #{mainTid}, 
+            oid_bak = #{oidBak}, 
+            logistics_company = #{logisticsCompany}, 
+            invoice_no = #{invoiceNo}, 
+            consign_time = #{consignTime}, 
+            sku_id = #{skuId}
+    </sql>
+
+<sql id="where">
+             oid = #{oid}
+             AND  tid = #{tid}
+             AND  seller_nick = #{sellerNick}
+             AND  buyer_nick = #{buyerNick}
+             AND  num_iid = #{numIid}
+             AND  total_fee = #{totalFee}
+             AND  discount_fee = #{discountFee}
+             AND  payment = #{payment}
+             AND  modified = #{modified}
+             AND  status = #{status}
+             AND  sku_properties_name = #{skuPropertiesName}
+             AND  num = #{num}
+             AND  title = #{title}
+             AND  price = #{price}
+             AND  pic_path = #{picPath}
+             AND  outer_iid = #{outerIid}
+             AND  outer_sku_id = #{outerSkuId}
+             AND  item_meal_name = #{itemMealName}
+             AND  refund_status = #{refundStatus}
+             AND  main_tid = #{mainTid}
+             AND  oid_bak = #{oidBak}
+             AND  logistics_company = #{logisticsCompany}
+             AND  invoice_no = #{invoiceNo}
+             AND  consign_time = #{consignTime}
+             AND  sku_id = #{skuId}
+    </sql>
+
+<sql id="duplicate">
+    ON DUPLICATE KEY UPDATE
+            oid = VALUES(oid), 
+            tid = VALUES(tid), 
+            seller_nick = VALUES(seller_nick), 
+            buyer_nick = VALUES(buyer_nick), 
+            num_iid = VALUES(num_iid), 
+            total_fee = VALUES(total_fee), 
+            discount_fee = VALUES(discount_fee), 
+            payment = VALUES(payment), 
+            modified = VALUES(modified), 
+            status = VALUES(status), 
+            sku_properties_name = VALUES(sku_properties_name), 
+            num = VALUES(num), 
+            title = VALUES(title), 
+            price = VALUES(price), 
+            pic_path = VALUES(pic_path), 
+            outer_iid = VALUES(outer_iid), 
+            outer_sku_id = VALUES(outer_sku_id), 
+            item_meal_name = VALUES(item_meal_name), 
+            refund_status = VALUES(refund_status), 
+            main_tid = VALUES(main_tid), 
+            oid_bak = VALUES(oid_bak), 
+            logistics_company = VALUES(logistics_company), 
+            invoice_no = VALUES(invoice_no), 
+            consign_time = VALUES(consign_time), 
+            sku_id = VALUES(sku_id)
+    </sql>
+
+<select id="selectXOrderInfo"  resultMap="xOrderInfo">
+    SELECT
+    <include refid="columns"/>
+    FROM x_order_info
+    WHERE taobao_id = #{taobaoId}
+    ORDER BY gmt_created DESC
+</select>
+
+<insert id="insertXOrderInfo">
+    INSERT INTO
+    x_order_info(<include refid="columns"/>)
+    VALUES
+    (<include refid="fields"/>)
+</insert>
+</mapper>

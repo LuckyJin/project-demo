@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.raycloud.dao.superdelivery2.ApiMessageDao">
+<resultMap id="apiMessage" type="com.raycloud.dao.bean.ApiMessage">
+<result property="apiName" column="api_name"/>
+<result property="subCode" column="sub_code"/>
+<result property="message" column="message"/>
+</resultMap>
+
+<sql id="columns">
+        api_name, sub_code, message
+</sql>
+
+<sql id="fields">
+        #{apiName}, #{subCode}, #{message}
+</sql>
+
+<sql id="update">
+            api_name = #{apiName}, 
+            sub_code = #{subCode}, 
+            message = #{message}
+    </sql>
+
+<sql id="where">
+             api_name = #{apiName}
+             AND  sub_code = #{subCode}
+             AND  message = #{message}
+    </sql>
+
+<sql id="duplicate">
+    ON DUPLICATE KEY UPDATE
+            api_name = VALUES(api_name), 
+            sub_code = VALUES(sub_code), 
+            message = VALUES(message)
+    </sql>
+<!--
+<select id="selectApiMessage"  resultMap="apiMessage">
+    SELECT
+    <include refid="columns"/>
+    FROM api_message
+    /*WHERE taobao_id = #{taobaoId}
+    ORDER BY gmt_created DESC*/
+</select>-->
+    <select id="selectApiMessage" resultMap="apiMessage">
+        select * from api_message
+    </select>
+
+<insert id="insertApiMessage">
+    INSERT INTO
+    api_message(<include refid="columns"/>)
+    VALUES
+    (<include refid="fields"/>)
+</insert>
+
+</mapper>

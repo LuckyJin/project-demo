@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.raycloud.dao.superdelivery2.AutoDeliveryJobDao">
+<resultMap id="autoDeliveryJob" type="com.raycloud.dao.bean.AutoDeliveryJob">
+<result property="id" column="id"/>
+<result property="taobaoId" column="taobao_id"/>
+<result property="excTime" column="exc_time"/>
+<result property="filterTids" column="filter_tids"/>
+<result property="createTime" column="create_time"/>
+</resultMap>
+
+<sql id="columns">
+        id, taobao_id, exc_time, filter_tids, create_time
+</sql>
+
+<sql id="fields">
+        #{id}, #{taobaoId}, #{excTime}, #{filterTids}, #{createTime}
+</sql>
+
+<sql id="update">
+            id = #{id}, 
+            taobao_id = #{taobaoId}, 
+            exc_time = #{excTime}, 
+            filter_tids = #{filterTids}, 
+            create_time = #{createTime}
+    </sql>
+
+<sql id="where">
+             id = #{id}
+             AND  taobao_id = #{taobaoId}
+             AND  exc_time = #{excTime}
+             AND  filter_tids = #{filterTids}
+             AND  create_time = #{createTime}
+    </sql>
+
+<sql id="duplicate">
+    ON DUPLICATE KEY UPDATE
+            id = VALUES(id), 
+            taobao_id = VALUES(taobao_id), 
+            exc_time = VALUES(exc_time), 
+            filter_tids = VALUES(filter_tids), 
+            create_time = VALUES(create_time)
+    </sql>
+
+<select id="selectAutoDeliveryJob"  resultMap="autoDeliveryJob">
+    SELECT
+    <include refid="columns"/>
+    FROM auto_delivery_job
+   /* WHERE taobao_id = #{taobaoId}
+    ORDER BY gmt_created DESC*/
+</select>
+
+<insert id="insertAutoDeliveryJob">
+    INSERT INTO
+    auto_delivery_job(<include refid="columns"/>)
+    VALUES
+    (<include refid="fields"/>)
+</insert>
+
+
+</mapper>

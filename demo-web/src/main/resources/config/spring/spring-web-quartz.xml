@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="jobFactory" class="com.raycloud.service.schedulejob.factory.JobFactory"/>
+
+    <bean name="scheduledJobS" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="com.raycloud.service.schedulejob.ScheduledJob"/>
+        <property name="description" value="定时将之前统计数据存储至数据库(StorePastCollectStatJob)"/>
+        <property name="durability" value="true"/>
+    </bean>
+
+    <bean name="scheduledJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="scheduledJobS"/>
+        <property name="cronExpression" value="0 */1 * * * ?"/>
+    </bean>
+
+    <bean name="PrinterScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+       <!-- <property name="dataSource" ref="quartzDataSource"/>
+        <property name="transactionManager" ref="quartzTxManager"/>
+        <property name="configLocation" value="classpath:/config/quartz-cluster.properties"/>
+        <property name="applicationContextSchedulerContextKey" value="applicationContext"/>
+        <property name="startupDelay" value="10"/>
+        <property name="overwriteExistingJobs" value="true"/>-->
+        <property name="jobFactory" ref="jobFactory"/>
+        <property name="triggers">
+            <list>
+                <ref bean="scheduledJobTrigger"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>

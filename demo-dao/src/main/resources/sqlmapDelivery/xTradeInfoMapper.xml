@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.raycloud.dao.superdelivery2.XTradeInfoDao">
+<resultMap id="xTradeInfo" type="com.raycloud.dao.bean.XTradeInfo">
+<result property="tid" column="tid"/>
+<result property="title" column="title"/>
+<result property="price" column="price"/>
+<result property="sellerNick" column="seller_nick"/>
+<result property="buyerNick" column="buyer_nick"/>
+<result property="modified" column="modified"/>
+<result property="created" column="created"/>
+<result property="status" column="status"/>
+<result property="type" column="type"/>
+<result property="shippingType" column="shipping_type"/>
+<result property="num" column="num"/>
+<result property="payment" column="payment"/>
+<result property="discountFee" column="discount_fee"/>
+<result property="tradeMemo" column="trade_memo"/>
+<result property="sellerMemo" column="seller_memo"/>
+<result property="buyerMessage" column="buyer_message"/>
+<result property="buyerEmail" column="buyer_email"/>
+<result property="totalFee" column="total_fee"/>
+<result property="postFee" column="post_fee"/>
+<result property="receiverName" column="receiver_name"/>
+<result property="receiverState" column="receiver_state"/>
+<result property="receiverCity" column="receiver_city"/>
+<result property="receiverDistrict" column="receiver_district"/>
+<result property="receiverAddress" column="receiver_address"/>
+<result property="receiverZip" column="receiver_zip"/>
+<result property="receiverMobile" column="receiver_mobile"/>
+<result property="receiverPhone" column="receiver_phone"/>
+<result property="printedKuaidi" column="printed_kuaidi"/>
+<result property="printedFahuo" column="printed_fahuo"/>
+<result property="mergeTid" column="merge_tid"/>
+<result property="ydId" column="yd_id"/>
+<result property="wuliu" column="wuliu"/>
+<result property="remark" column="remark"/>
+<result property="payTime" column="pay_time"/>
+<result property="printFahuoTime" column="print_fahuo_time"/>
+<result property="printKuaidiTime" column="print_kuaidi_time"/>
+<result property="fahuoTime" column="fahuo_time"/>
+<result property="tradeGift" column="trade_gift"/>
+<result property="invoiceName" column="invoice_name"/>
+<result property="isElec" column="is_elec"/>
+<result property="serviceTag" column="service_tag"/>
+<result property="printedPeihuo" column="printed_peihuo"/>
+<result property="printPeihuoTime" column="print_peihuo_time"/>
+<result property="sellerFlag" column="seller_flag"/>
+<result property="wuliuOf" column="wuliu_of"/>
+<result property="takeApart" column="take_apart"/>
+<result property="part" column="part"/>
+<result property="partTids" column="part_tids"/>
+<result property="mainTid" column="main_tid"/>
+<result property="partType" column="part_type"/>
+<result property="orderCode" column="order_code"/>
+<result property="elecType" column="elec_type"/>
+<result property="rdsModified" column="rds_modified"/>
+<result property="pbly" column="pbly"/>
+</resultMap>
+
+<sql id="columns">
+        tid, title, price, seller_nick, buyer_nick, modified, created, status, type, shipping_type, num, payment, discount_fee, trade_memo, seller_memo, buyer_message, buyer_email, total_fee, post_fee, receiver_name, receiver_state, receiver_city, receiver_district, receiver_address, receiver_zip, receiver_mobile, receiver_phone, printed_kuaidi, printed_fahuo, merge_tid, yd_id, wuliu, remark, pay_time, print_fahuo_time, print_kuaidi_time, fahuo_time, trade_gift, invoice_name, is_elec, service_tag, printed_peihuo, print_peihuo_time, seller_flag, wuliu_of, take_apart, part, part_tids, main_tid, part_type, order_code, elec_type, rds_modified, pbly
+</sql>
+
+<sql id="fields">
+        #{tid}, #{title}, #{price}, #{sellerNick}, #{buyerNick}, #{modified}, #{created}, #{status}, #{type}, #{shippingType}, #{num}, #{payment}, #{discountFee}, #{tradeMemo}, #{sellerMemo}, #{buyerMessage}, #{buyerEmail}, #{totalFee}, #{postFee}, #{receiverName}, #{receiverState}, #{receiverCity}, #{receiverDistrict}, #{receiverAddress}, #{receiverZip}, #{receiverMobile}, #{receiverPhone}, #{printedKuaidi}, #{printedFahuo}, #{mergeTid}, #{ydId}, #{wuliu}, #{remark}, #{payTime}, #{printFahuoTime}, #{printKuaidiTime}, #{fahuoTime}, #{tradeGift}, #{invoiceName}, #{isElec}, #{serviceTag}, #{printedPeihuo}, #{printPeihuoTime}, #{sellerFlag}, #{wuliuOf}, #{takeApart}, #{part}, #{partTids}, #{mainTid}, #{partType}, #{orderCode}, #{elecType}, #{rdsModified}, #{pbly}
+</sql>
+
+<sql id="update">
+            tid = #{tid}, 
+            title = #{title}, 
+            price = #{price}, 
+            seller_nick = #{sellerNick}, 
+            buyer_nick = #{buyerNick}, 
+            modified = #{modified}, 
+            created = #{created}, 
+            status = #{status}, 
+            type = #{type}, 
+            shipping_type = #{shippingType}, 
+            num = #{num}, 
+            payment = #{payment}, 
+            discount_fee = #{discountFee}, 
+            trade_memo = #{tradeMemo}, 
+            seller_memo = #{sellerMemo}, 
+            buyer_message = #{buyerMessage}, 
+            buyer_email = #{buyerEmail}, 
+            total_fee = #{totalFee}, 
+            post_fee = #{postFee}, 
+            receiver_name = #{receiverName}, 
+            receiver_state = #{receiverState}, 
+            receiver_city = #{receiverCity}, 
+            receiver_district = #{receiverDistrict}, 
+            receiver_address = #{receiverAddress}, 
+            receiver_zip = #{receiverZip}, 
+            receiver_mobile = #{receiverMobile}, 
+            receiver_phone = #{receiverPhone}, 
+            printed_kuaidi = #{printedKuaidi}, 
+            printed_fahuo = #{printedFahuo}, 
+            merge_tid = #{mergeTid}, 
+            yd_id = #{ydId}, 
+            wuliu = #{wuliu}, 
+            remark = #{remark}, 
+            pay_time = #{payTime}, 
+            print_fahuo_time = #{printFahuoTime}, 
+            print_kuaidi_time = #{printKuaidiTime}, 
+            fahuo_time = #{fahuoTime}, 
+            trade_gift = #{tradeGift}, 
+            invoice_name = #{invoiceName}, 
+            is_elec = #{isElec}, 
+            service_tag = #{serviceTag}, 
+            printed_peihuo = #{printedPeihuo}, 
+            print_peihuo_time = #{printPeihuoTime}, 
+            seller_flag = #{sellerFlag}, 
+            wuliu_of = #{wuliuOf}, 
+            take_apart = #{takeApart}, 
+            part = #{part}, 
+            part_tids = #{partTids}, 
+            main_tid = #{mainTid}, 
+            part_type = #{partType}, 
+            order_code = #{orderCode}, 
+            elec_type = #{elecType}, 
+            rds_modified = #{rdsModified}, 
+            pbly = #{pbly}
+    </sql>
+
+<sql id="where">
+             tid = #{tid}
+             AND  title = #{title}
+             AND  price = #{price}
+             AND  seller_nick = #{sellerNick}
+             AND  buyer_nick = #{buyerNick}
+             AND  modified = #{modified}
+             AND  created = #{created}
+             AND  status = #{status}
+             AND  type = #{type}
+             AND  shipping_type = #{shippingType}
+             AND  num = #{num}
+             AND  payment = #{payment}
+             AND  discount_fee = #{discountFee}
+             AND  trade_memo = #{tradeMemo}
+             AND  seller_memo = #{sellerMemo}
+             AND  buyer_message = #{buyerMessage}
+             AND  buyer_email = #{buyerEmail}
+             AND  total_fee = #{totalFee}
+             AND  post_fee = #{postFee}
+             AND  receiver_name = #{receiverName}
+             AND  receiver_state = #{receiverState}
+             AND  receiver_city = #{receiverCity}
+             AND  receiver_district = #{receiverDistrict}
+             AND  receiver_address = #{receiverAddress}
+             AND  receiver_zip = #{receiverZip}
+             AND  receiver_mobile = #{receiverMobile}
+             AND  receiver_phone = #{receiverPhone}
+             AND  printed_kuaidi = #{printedKuaidi}
+             AND  printed_fahuo = #{printedFahuo}
+             AND  merge_tid = #{mergeTid}
+             AND  yd_id = #{ydId}
+             AND  wuliu = #{wuliu}
+             AND  remark = #{remark}
+             AND  pay_time = #{payTime}
+             AND  print_fahuo_time = #{printFahuoTime}
+             AND  print_kuaidi_time = #{printKuaidiTime}
+             AND  fahuo_time = #{fahuoTime}
+             AND  trade_gift = #{tradeGift}
+             AND  invoice_name = #{invoiceName}
+             AND  is_elec = #{isElec}
+             AND  service_tag = #{serviceTag}
+             AND  printed_peihuo = #{printedPeihuo}
+             AND  print_peihuo_time = #{printPeihuoTime}
+             AND  seller_flag = #{sellerFlag}
+             AND  wuliu_of = #{wuliuOf}
+             AND  take_apart = #{takeApart}
+             AND  part = #{part}
+             AND  part_tids = #{partTids}
+             AND  main_tid = #{mainTid}
+             AND  part_type = #{partType}
+             AND  order_code = #{orderCode}
+             AND  elec_type = #{elecType}
+             AND  rds_modified = #{rdsModified}
+             AND  pbly = #{pbly}
+    </sql>
+
+<sql id="duplicate">
+    ON DUPLICATE KEY UPDATE
+            tid = VALUES(tid), 
+            title = VALUES(title), 
+            price = VALUES(price), 
+            seller_nick = VALUES(seller_nick), 
+            buyer_nick = VALUES(buyer_nick), 
+            modified = VALUES(modified), 
+            created = VALUES(created), 
+            status = VALUES(status), 
+            type = VALUES(type), 
+            shipping_type = VALUES(shipping_type), 
+            num = VALUES(num), 
+            payment = VALUES(payment), 
+            discount_fee = VALUES(discount_fee), 
+            trade_memo = VALUES(trade_memo), 
+            seller_memo = VALUES(seller_memo), 
+            buyer_message = VALUES(buyer_message), 
+            buyer_email = VALUES(buyer_email), 
+            total_fee = VALUES(total_fee), 
+            post_fee = VALUES(post_fee), 
+            receiver_name = VALUES(receiver_name), 
+            receiver_state = VALUES(receiver_state), 
+            receiver_city = VALUES(receiver_city), 
+            receiver_district = VALUES(receiver_district), 
+            receiver_address = VALUES(receiver_address), 
+            receiver_zip = VALUES(receiver_zip), 
+            receiver_mobile = VALUES(receiver_mobile), 
+            receiver_phone = VALUES(receiver_phone), 
+            printed_kuaidi = VALUES(printed_kuaidi), 
+            printed_fahuo = VALUES(printed_fahuo), 
+            merge_tid = VALUES(merge_tid), 
+            yd_id = VALUES(yd_id), 
+            wuliu = VALUES(wuliu), 
+            remark = VALUES(remark), 
+            pay_time = VALUES(pay_time), 
+            print_fahuo_time = VALUES(print_fahuo_time), 
+            print_kuaidi_time = VALUES(print_kuaidi_time), 
+            fahuo_time = VALUES(fahuo_time), 
+            trade_gift = VALUES(trade_gift), 
+            invoice_name = VALUES(invoice_name), 
+            is_elec = VALUES(is_elec), 
+            service_tag = VALUES(service_tag), 
+            printed_peihuo = VALUES(printed_peihuo), 
+            print_peihuo_time = VALUES(print_peihuo_time), 
+            seller_flag = VALUES(seller_flag), 
+            wuliu_of = VALUES(wuliu_of), 
+            take_apart = VALUES(take_apart), 
+            part = VALUES(part), 
+            part_tids = VALUES(part_tids), 
+            main_tid = VALUES(main_tid), 
+            part_type = VALUES(part_type), 
+            order_code = VALUES(order_code), 
+            elec_type = VALUES(elec_type), 
+            rds_modified = VALUES(rds_modified), 
+            pbly = VALUES(pbly)
+    </sql>
+
+<!--<select id="selectXTradeInfo"  resultMap="xTradeInfo">
+    SELECT
+    <include refid="columns"/>
+    FROM x_trade_info
+    WHERE taobao_id = #{taobaoId}
+    ORDER BY gmt_created DESC
+</select>-->
+
+<insert id="insertXTradeInfo">
+    INSERT INTO
+    x_trade_info(<include refid="columns"/>)
+    VALUES
+    (<include refid="fields"/>)
+</insert>
+
+    <select id="getCount" resultType="java.lang.Long">
+      select COUNT(*) FROM x_trade_info
+    </select>
+
+    <select id="getPageList" resultMap="xTradeInfo">
+        SELECT
+       <include refid="columns"></include>
+        FROM x_trade_info
+        <if test="seller_nick != null">
+            WHERE seller_nick = #{seller_nick}
+        </if>
+        ORDER by modified DESC
+        <if test="limit != null">
+            LIMIT
+            <if test="start != null">#{start},#{limit}</if>
+        </if>
+
+    </select>
+   <!-- tid, title, price, seller_nick, buyer_nick-->
+</mapper>
