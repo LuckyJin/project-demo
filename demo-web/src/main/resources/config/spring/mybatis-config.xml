@@ -5,7 +5,7 @@
 <configuration>
 
     <typeAliases>
-        <package name="com.raycloud.dao" />
+        <package name="com.cn.dao.bean" />
     </typeAliases>
     
 

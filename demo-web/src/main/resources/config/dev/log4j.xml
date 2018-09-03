@@ -86,6 +86,7 @@
     </logger>
     <root>
         <priority value="info" />
+        <appender-ref ref="TRACE_SQL_LOGGER"/>
         <appender-ref ref="INFO_LOGGER" />
         <appender-ref ref="ERROR_LOGGER" />
         <!-- 添加一个错误日志的配置,错误日志的JSON格式输出实现 -->

@@ -16,11 +16,6 @@
            http://shardingsphere.io/schema/shardingsphere/sharding
            http://shardingsphere.io/schema/shardingsphere/sharding/sharding.xsd">
 
-    <!-- 自动将Service层注入-->
-   <!-- <context:component-scan base-package="com.raycloud.service"/>
-
-    <context:component-scan base-package="com.raycloud.aspect"/>-->
-
     <!-- dbcp数据源 1-->
     <bean id="dataSource0" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
           destroy-method="close">
@@ -101,7 +96,7 @@
          &lt;!&ndash; 连接属性 &ndash;&gt;
          <property name="connectionProperties" value="clientEncoding=UTF-8"/>
      </bean>
-    <bean id="multipleDataSource" class="com.raycloud.aspect.MultipleDataSource">
+    <bean id="multipleDataSource" class="MultipleDataSource">
         <property name="defaultTargetDataSource" ref="dataSource1"/> &lt;!&ndash;默认主库&ndash;&gt;
         <property name="targetDataSources">
             <map>
@@ -149,7 +144,7 @@
 
     <!-- spring与mybatis整合配置，扫描所有dao 和所有mapper文件 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.raycloud.dao"/>
+        <property name="basePackage" value="com.cn.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
@@ -166,32 +161,11 @@
           class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <property name="converters">
             <set>
-                <bean class="com.raycloud.springmvc.StringToDateConverter"/>
+                <bean class="com.cn.springmvc.StringToDateConverter"/>
             </set>
         </property>
     </bean>
 
-    <!-- 内容协商管理器  -->
-    <!--1、首先检查路径扩展名（如my.pdf）；2、其次检查Parameter（如my?format=pdf）；3、检查Accept Header-->
-   <!-- <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
-        &lt;!&ndash; 扩展名至mimeType的映射,即 /appuser.json => application/json &ndash;&gt;
-        <property name="favorPathExtension" value="true"/>
-        &lt;!&ndash; 用于开启 /userinfo/123?format=json 的支持 &ndash;&gt;
-        <property name="favorParameter" value="true"/>
-        <property name="parameterName" value="format"/>
-        &lt;!&ndash; 是否忽略Accept Header &ndash;&gt;
-        <property name="ignoreAcceptHeader" value="false"/>
-
-        <property name="mediaTypes"> &lt;!&ndash;扩展名到MIME的映射；favorPathExtension, favorParameter是true时起作用  &ndash;&gt;
-            <value>
-                json=application/json
-                xml=application/xml
-                html=text/html
-            </value>
-        </property>
-        &lt;!&ndash; 默认的content type &ndash;&gt;
-        <property name="defaultContentType" value="text/html"/>
-    </bean>-->
 
     <aop:aspectj-autoproxy/>
 
@@ -221,15 +195,5 @@
      <bean id="quartzTxManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
          <property name="dataSource" ref="quartzDataSource"/>
      </bean>-->
-
-    <bean id="a" class="com.raycloud.test.A" scope="prototype">
-        <property name="b" ref="b" />
-    </bean>
-    <bean id="b" class="com.raycloud.test.B" scope="prototype">
-        <property name="c" ref="c" />
-    </bean>
-    <bean id="c" class="com.raycloud.test.C" scope="prototype">
-        <property name="a" ref="a" />
-    </bean>
 
 </beans>

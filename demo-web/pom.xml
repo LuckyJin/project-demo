@@ -96,7 +96,7 @@
         </profile>
     </profiles>
     <build>
-        <defaultGoal>compile</defaultGoal>
+       <!-- <defaultGoal>compile</defaultGoal>-->
         <finalName>demo-web</finalName>
         <resources>
             <resource>
