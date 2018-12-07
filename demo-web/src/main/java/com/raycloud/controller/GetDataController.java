@@ -1,12 +1,12 @@
 /*
-package com.raycloud.controller;
+package com.cn.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
-import com.raycloud.autocomment.domain.UserDomain;
-import com.raycloud.order.common.util.TaobaoAPI2Util;
-import com.raycloud.utils.date.DateUtil;
-import com.raycloud.utils.exception.InvalidSessionException;
+import com.cn.autocomment.domain.UserDomain;
+import com.cn.order.common.util.TaobaoAPI2Util;
+import com.cn.utils.date.DateUtil;
+import com.cn.utils.exception.InvalidSessionException;
 import com.taobao.api.domain.Trade;
 import com.taobao.api.request.TradesSoldGetRequest;
 import com.taobao.api.response.TradesSoldGetResponse;

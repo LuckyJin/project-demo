@@ -1,6 +1,6 @@
-package com.raycloud.dao.testDao;
+package com.cn.dao.testDao;
 
-import com.raycloud.dao.bean.User;
+import com.cn.dao.bean.User;
 
 public interface UserDao {
     User querySessionUser(String nick);

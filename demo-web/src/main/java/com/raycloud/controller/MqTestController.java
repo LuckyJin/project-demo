@@ -1,6 +1,6 @@
-package com.raycloud.controller;
+package com.cn.controller;
 
-import com.raycloud.service.mq.producer.ActiveMqProducer;
+import com.cn.service.mq.producer.ActiveMqProducer;
 
 public class MqTestController {
 

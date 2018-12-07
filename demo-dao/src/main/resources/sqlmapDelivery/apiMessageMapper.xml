@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.raycloud.dao.superdelivery2.ApiMessageDao">
-<resultMap id="apiMessage" type="com.raycloud.dao.bean.ApiMessage">
+<mapper namespace="ApiMessageDao">
+<resultMap id="apiMessage" type="ApiMessage">
 <result property="apiName" column="api_name"/>
 <result property="subCode" column="sub_code"/>
 <result property="message" column="message"/>

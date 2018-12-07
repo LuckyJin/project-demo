@@ -1,6 +1,6 @@
-package com.raycloud.dao.superdelivery2;
+package com.cn.dao.superdelivery2;
 
-import com.raycloud.dao.bean.AutoDeliveryJob;
+import com.cn.dao.bean.AutoDeliveryJob;
 
 import java.util.List;
 

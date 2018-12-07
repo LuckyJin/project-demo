@@ -1,4 +1,4 @@
-package com.raycloud.dao.bean;
+package com.cn.dao.bean;
 
 import org.springframework.format.annotation.DateTimeFormat;
 

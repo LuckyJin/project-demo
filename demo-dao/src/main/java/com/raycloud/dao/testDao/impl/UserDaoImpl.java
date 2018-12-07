@@ -1,7 +1,7 @@
-package com.raycloud.dao.testDao.impl;
+package com.cn.dao.testDao.impl;
 
-import com.raycloud.dao.bean.User;
-import com.raycloud.dao.testDao.UserDao;
+import com.cn.dao.bean.User;
+import com.cn.dao.testDao.UserDao;
 import org.springframework.stereotype.Repository;
 
 @Repository

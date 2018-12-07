@@ -1,4 +1,4 @@
-package com.raycloud.dao.superdelivery2;
+package com.cn.dao.superdelivery2;
 
 public interface XOrderInfoDao {
 }

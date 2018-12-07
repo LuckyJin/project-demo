@@ -1,6 +1,6 @@
-package com.raycloud.springmvc;
+package com.cn.springmvc;
 
-import com.raycloud.service.common.util.DateUtils;
+import com.cn.service.common.util.DateUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.convert.converter.Converter;
 

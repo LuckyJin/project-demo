@@ -1,4 +1,4 @@
-package com.raycloud.exception;
+package com.cn.exception;
 
 /**
  * Created by baomingfeng at 2017-09-04 19:41:20

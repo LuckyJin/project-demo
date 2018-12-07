@@ -1,6 +1,6 @@
-package com.raycloud.dao.testDao;
+package com.cn.dao.testDao;
 
-import com.raycloud.dao.bean.TestPhone;
+import com.cn.dao.bean.TestPhone;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;

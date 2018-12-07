@@ -1,6 +1,6 @@
-package com.raycloud.dao.superdelivery2;
+package com.cn.dao.superdelivery2;
 
-import com.raycloud.dao.bean.ApiMessage;
+import com.cn.dao.bean.ApiMessage;
 
 import java.util.List;
 

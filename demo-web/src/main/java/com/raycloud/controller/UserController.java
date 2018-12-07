@@ -1,7 +1,7 @@
-package com.raycloud.controller;
+package com.cn.controller;
 
-import com.raycloud.dao.bean.User;
-import com.raycloud.dao.testDao.UserDao;
+import com.cn.dao.bean.User;
+import com.cn.dao.testDao.UserDao;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;

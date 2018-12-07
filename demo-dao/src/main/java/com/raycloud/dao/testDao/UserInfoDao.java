@@ -1,6 +1,6 @@
-package com.raycloud.dao.testDao;
+package com.cn.dao.testDao;
 
-import com.raycloud.dao.bean.UserInfo;
+import com.cn.dao.bean.UserInfo;
 
 import java.util.List;
 

@@ -1,5 +1,5 @@
 /*
-package com.raycloud.controller;
+package com.cn.controller;
 
 import com.alibaba.dubbo.common.utils.CollectionUtils;
 import org.apache.commons.io.IOUtils;

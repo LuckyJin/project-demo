@@ -1,4 +1,4 @@
-package com.raycloud.util.vo;
+package com.cn.util.vo;
 
 import java.io.Serializable;
 import java.util.List;

@@ -1,9 +1,9 @@
-package com.raycloud.controller;
+package com.cn.controller;
 
-import com.raycloud.service.StaticFactory;
-import com.raycloud.service.StaticFactoryHandler;
-import com.raycloud.service.common.enums.StaticFactoryType;
-import com.raycloud.service.common.util.MemcachedUtil;
+import com.cn.service.StaticFactory;
+import com.cn.service.StaticFactoryHandler;
+import com.cn.service.common.enums.StaticFactoryType;
+import com.cn.service.common.util.MemcachedUtil;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

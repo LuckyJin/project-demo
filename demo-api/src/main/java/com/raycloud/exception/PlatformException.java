@@ -1,4 +1,4 @@
-package com.raycloud.exception;
+package com.cn.exception;
 
 /**
  * 平台自定义的异常

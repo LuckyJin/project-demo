@@ -4,10 +4,10 @@
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="jobFactory" class="com.raycloud.service.schedulejob.factory.JobFactory"/>
+    <bean id="jobFactory" class="JobFactory"/>
 
     <bean name="scheduledJobS" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
-        <property name="jobClass" value="com.raycloud.service.schedulejob.ScheduledJob"/>
+        <property name="jobClass" value="ScheduledJob"/>
         <property name="description" value="定时将之前统计数据存储至数据库(StorePastCollectStatJob)"/>
         <property name="durability" value="true"/>
     </bean>

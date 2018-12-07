@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.raycloud.dao.superdelivery2.OrderInfoDao">
-<resultMap id="orderInfo79" type="com.raycloud.dao.bean.OrderInfo">
+<mapper namespace="OrderInfoDao">
+<resultMap id="orderInfo79" type="OrderInfo">
 <result property="oid" column="oid"/>
 <result property="tid" column="tid"/>
 <result property="sellerNick" column="seller_nick"/>

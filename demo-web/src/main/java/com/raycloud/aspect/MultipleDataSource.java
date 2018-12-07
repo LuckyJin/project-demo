@@ -1,4 +1,4 @@
-package com.raycloud.aspect;
+package com.cn.aspect;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 

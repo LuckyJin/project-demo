@@ -1,6 +1,6 @@
-package com.raycloud.dao.superdelivery2;
+package com.cn.dao.superdelivery2;
 
-import com.raycloud.dao.bean.XTradeInfo;
+import com.cn.dao.bean.XTradeInfo;
 
 import java.util.List;
 import java.util.Map;

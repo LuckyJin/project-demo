@@ -1,7 +1,7 @@
-package com.raycloud.conf;
+package com.cn.conf;
 
 
-import com.raycloud.springmvc.StringToDateConverter;
+import com.cn.springmvc.StringToDateConverter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
